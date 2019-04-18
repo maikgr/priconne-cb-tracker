@@ -1,3 +1,4 @@
+#### crawler .gitignore
 # Logs
 logs
 *.log
@@ -63,3 +64,30 @@ typings/
 .vscode/
 credentials.json
 token.json
+
+
+###### web .gitignore
+.DS_Store
+node_modules
+/dist
+
+/tests/e2e/videos/
+/tests/e2e/screenshots/
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
