@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 const connection = mongoose.connection;
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, (err) => { if (err) console.error(err) });
 connection.on('connected', () => console.log('connected to database'));
 connection.on('disconnected', () => console.log('disconnected from database'));
 
