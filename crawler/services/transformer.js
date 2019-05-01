@@ -4,7 +4,7 @@ module.exports.chars = function (rows) {
     if (row && row.length >= 8) {
       chars.push({
         char: {
-          image: row[0].replace('=image("', '').replace('")', ''),
+          image: row[0].replace('=image("', '').replace('=IMAGE("', '').replace('")', ''),
           name: row[2],
           alias: row[1],
           rarity: row[3].replace('*', '')
