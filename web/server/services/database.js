@@ -32,3 +32,51 @@ const Char = mongoose.model('pc-char', CharSchema, 'pc-chars')
 module.exports.get = function () {
   return Char.find().exec();
 }
+
+
+const userSchema = new Schema({
+  user: {
+    username: String,
+    level: Number
+  },
+  roster: {
+    owned: [{
+      id: String,
+      name: String,
+      level: Number,
+      rank: Number,
+      gear: String,
+      unique: Number
+    }],
+    notOwned:  [{
+      id: String,
+      name: String,
+      level: Number,
+      rank: Number,
+      gear: String,
+      unique: Number
+    }]
+  },
+  teams: {
+    name: String,
+    chars: [String]
+  }
+})
+
+const User = mongoose.model('user', userSchema, 'users');
+
+module.exports.addUser = function(user, owned, notOwned) {
+  const newUser = new User({
+    user,
+    roster: {
+      owned,
+      notOwned
+    }
+  })
+  
+  return newUser.save();
+}
+
+module.exports.getUser = function (id) {
+  return User.findOne({ _id: id }).exec();
+}

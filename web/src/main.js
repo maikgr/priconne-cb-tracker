@@ -1,12 +1,16 @@
 import Vue from 'vue'
-import './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vSelect from 'vue-select'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+import VTooltip from 'v-tooltip'
+
+Vue.use(Buefy)
+Vue.use(VTooltip)
 
 Vue.config.productionTip = false
-Vue.component('v-select2', vSelect)
+
 new Vue({
   router,
   store,
