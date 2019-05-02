@@ -69,4 +69,10 @@ figure.image > img {
   width: auto;
   height: auto;
 }
+
+#details {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
 </style>
