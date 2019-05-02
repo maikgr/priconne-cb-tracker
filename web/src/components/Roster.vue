@@ -4,7 +4,7 @@
       <p class="title">Owned</p>
       <div class="columns is-multiline is-mobile">
         <div
-          class="column is-narrow chara"
+          class="column chara"
           v-for="(character, index) in owned"
           :key="index"
         >
@@ -13,7 +13,7 @@
             <i class="fas fa-times" aria-hidden="true"></i>
           </span>
           <div class="card" @click="select(index)">
-            <div class="card-content">
+            <div class="card-content is-paddingless">
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-64x64" v-tooltip.auto="character.name">
@@ -113,7 +113,9 @@ export default {
   cursor: pointer;
 }
 
-.chara .card-content {
-  padding: 0rem 1rem 0rem 0rem;
+.chara .media-content {
+  padding-top: 0.25rem;
+  min-width: 120px;
+  max-height: 64px;
 }
 </style>
