@@ -4,7 +4,7 @@
       <p class="title">Owned</p>
       <div class="columns is-multiline is-mobile">
         <div
-          class="column chara"
+          class="column is-3 chara"
           v-for="(character, index) in owned"
           :key="index"
         >
