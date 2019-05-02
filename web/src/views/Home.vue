@@ -1,7 +1,14 @@
 <template>
-  <div id="home">
-    <Nav :hasSave="hasSave"/>
-    <section id="main" class="section">
+  <section id="main" class="section is-paddingless">
+    <nav class="navbar has-background-light">
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item">
+          <UserForm />
+          </div>
+        </div>
+      </div>
+    </nav>
       <div class="tile is-parent is-paddingless">
         <div class="tile">
           <Roster/>
@@ -12,41 +19,34 @@
           </div>
         </div>
       </div>
-    </section>
-  </div>
+  </section>
 </template>
 
 <script>
 import Roster from "@/components/Roster";
 import RosterDetails from "@/components/RosterDetails";
-import Nav from "@/components/Nav"
+import UserForm from "@/components/UserForm";
 
 export default {
   components: {
-    Nav,
     Roster,
-    RosterDetails
-  },
-  data:() => ({
-    hasSave: false
-  })
+    RosterDetails,
+    UserForm
+  }
 };
 </script>
 
 <style>
-#home {
-  height: 100%;
-}
 
 #main {
-  height: 91.5%;
+  min-height: 91.5%;
+  height: auto;
   background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../assets/backgrounds/bg-3.jpg") no-repeat center center fixed;
+    fixed url("../assets/backgrounds/bg-3.jpg") center center no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  padding: 0em 0.7em;
 }
 
 .navbar-brand .navbar-item img {

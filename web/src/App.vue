@@ -1,15 +1,20 @@
 <template>
-  <Home />
+  <div id="app">
+    <Nav />
+    <Home />
+  </div>
 </template>
 
 <script>
 import Home from './views/Home'
+import Nav from './components/Nav'
 import api from "@/services/api";
 
 export default {
   name: 'App',
   components: {
-    Home
+    Home,
+    Nav
   },
   created() {
     api
@@ -26,6 +31,9 @@ export default {
 
 <style>
 html, body {
+  height: 100%;
+}
+#app {
   height: 100%;
 }
 </style>
