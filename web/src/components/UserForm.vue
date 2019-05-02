@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import api from '@/services/api'
 export default {
   data: () => ({
     username: '',
@@ -32,6 +33,11 @@ export default {
         return
       }
 
+      api.addUser(this.username, this.userlevel, this.$store.state.owned, this.$store.state.notOwned)
+        .then((result) => {
+          console.log(result.data)
+        })
+        .catch((e) => console.error(e))
       this.isInvalid = false
     }
   }
