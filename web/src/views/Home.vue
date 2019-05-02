@@ -13,7 +13,7 @@
         <div class="tile">
           <Roster/>
         </div>
-        <div v-if="$store.state.selected" class="tile is-parent is-vertical is-3">
+        <div v-if="$store.state.selected !== null" class="tile is-parent is-vertical is-3">
           <div class="tile is-child">
             <RosterDetails/>
           </div>
@@ -26,12 +26,22 @@
 import Roster from "@/components/Roster";
 import RosterDetails from "@/components/RosterDetails";
 import UserForm from "@/components/UserForm";
-
+import api from "@/services/api"
+import { transform } from "@/services/dbchar-transformer"
 export default {
   components: {
     Roster,
     RosterDetails,
     UserForm
+  },
+  created() {
+    api.get()
+      .then(result => {
+        this.$store.state.owned = transform(result);
+      })
+      .catch(e => {
+        console.error(e);
+      });
   }
 };
 </script>

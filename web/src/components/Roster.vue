@@ -13,17 +13,17 @@
             <i class="fas fa-times" aria-hidden="true"></i>
           </span>
           <div class="card" @click="select(index)">
-            <div class="card-content is-paddingless">
+            <div class="card-content">
               <div class="media">
                 <div class="media-left">
-                  <figure class="image is-64x64" v-tooltip.auto="character.char.alias">
-                    <img :src="character.char.image">
+                  <figure class="image is-64x64" v-tooltip.auto="character.name">
+                    <img :src="character.image.avatar">
                   </figure>
                 </div>
                 <div class="media-content">
-                  <p class="has-text-weight-semibold is-size-7"> 127 / R12 / 5⭐️</p>
-                  <p class="has-text-weight-normal is-size-7"> Gear Maxed </p>
-                  <p class="has-text-weight-normal is-size-7"> Unique 130 </p>
+                  <p class="has-text-weight-semibold is-size-7"> {{ character.level }} / R{{ character.rank }} / {{ character.stars }}⭐️</p>
+                  <p class="has-text-weight-normal is-size-7"> Gears {{ character.gears }} </p>
+                  <p v-if="character.unique !== null" class="has-text-weight-normal is-size-7"> Unique {{ character.unique }} </p>
                 </div>
               </div>
             </div>
@@ -43,8 +43,8 @@
           @click="moveToOwned(index)">
             <i class="fas fa-times" aria-hidden="true"></i>
           </span>
-          <figure class="image is-64x64 is-unavailable"  v-tooltip.auto="character.char.alias">
-            <img :src="character.char.image">
+          <figure class="image is-64x64 is-unavailable"  v-tooltip.auto="character.name">
+            <img :src="character.image.avatar">
           </figure>
         </div>
       </div>
@@ -55,28 +55,27 @@
 <script>
 
 export default {
-  data: () => ({
-    notOwned: []
-  }),
   computed: {
     owned: function() {
-      return this.$store.state.chars
+      return this.$store.state.owned
+    },
+    notOwned: function() {
+      return this.$store.state.notOwned
     }
   },
   methods: {
     moveToOwned: function(index) {
       const char = this.notOwned[index];
-      this.notOwned.splice(index, 1);
-      this.owned.push(char);
+      this.$store.state.notOwned.splice(index, 1);
+      this.$store.state.owned.push(char);
     },
     moveToNotOwned: function(index) {
       const char = this.owned[index];
-      this.owned.splice(index, 1);
-      this.notOwned.push(char);
+      this.$store.state.owned.splice(index, 1);
+      this.$store.state.notOwned.push(char);
     },
     select: function(index) {
-      const char = this.owned[index];
-      this.$store.dispatch('selectChar', char);
+      this.$store.state.selected = this.owned[index]
     }
   }
 };
@@ -112,5 +111,9 @@ export default {
 
 .chara > .card {
   cursor: pointer;
+}
+
+.chara .card-content {
+  padding: 0rem 1rem 0rem 0rem;
 }
 </style>

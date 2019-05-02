@@ -44,6 +44,7 @@ const userSchema = new Schema({
       id: String,
       name: String,
       level: Number,
+      stars: Number,
       rank: Number,
       gear: String,
       unique: Number
@@ -52,6 +53,7 @@ const userSchema = new Schema({
       id: String,
       name: String,
       level: Number,
+      stars: Number,
       rank: Number,
       gear: String,
       unique: Number
