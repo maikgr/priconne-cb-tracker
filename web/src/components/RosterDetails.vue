@@ -27,19 +27,19 @@
           </b-field>
         </div>
         <div class="column is-6">
-          <b-field label="Gear Progression">
-            <b-select placeholder="Gear Progression" expanded>
+          <b-field label="Gears">
+            <b-select placeholder="Progress" expanded>
               <option
                 v-for="gear in gearProgress"
-                :value="gear.value"
-                :key="gear.status"
-              >{{ gear.value }}</option>
+                :value="gear"
+                :key="gear"
+              >{{ gear }}</option>
             </b-select>
           </b-field>
         </div>
         <div class="column is-6">
-          <b-field v-if="selected.unique !== ''" label="Unique Level">
-            <b-select placeholder="Unique Level" expanded>
+          <b-field v-if="selected.unique !== ''" label="Unique">
+            <b-select placeholder="Level" expanded>
               <option v-for="unique in uniqueLevels" :value="unique" :key="unique">{{ unique }}</option>
             </b-select>
           </b-field>
@@ -55,11 +55,7 @@
 <script>
 export default {
   data: () => ({
-    gearProgress: [
-      { status: 1, value: "Maxed" },
-      { status: 0, value: "In-Progress" },
-      { status: -1, value: "None" }
-    ],
+    gearProgress: [ "Maxed", "In Progress", "None" ],
     uniqueLevels: [30, 50, 70, 90, 110, 130]
   }),
   computed: {
