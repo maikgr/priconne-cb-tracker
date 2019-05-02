@@ -12,9 +12,22 @@
           @click="moveToNotOwned(index)">
             <i class="fas fa-times" aria-hidden="true"></i>
           </span>
-          <figure class="image is-64x64" v-tooltip.auto="character.char.alias" @click="select(index)">
-            <img :src="character.char.image">
-          </figure>
+          <div class="card" @click="select(index)">
+            <div class="card-content is-paddingless">
+              <div class="media">
+                <div class="media-left">
+                  <figure class="image is-64x64" v-tooltip.auto="character.char.alias">
+                    <img :src="character.char.image">
+                  </figure>
+                </div>
+                <div class="media-content">
+                  <p class="has-text-weight-semibold is-size-7"> 127 / R12 / 5⭐️</p>
+                  <p class="has-text-weight-normal is-size-7"> Gear Maxed </p>
+                  <p class="has-text-weight-normal is-size-7"> Unique 130 </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -90,14 +103,14 @@ export default {
 
 .chara > .icon {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 3px;
+  left: 3px;
   z-index: 2;
   color: hsl(348, 100%, 61%);
   cursor: pointer;
 }
 
-.chara > .image {
+.chara > .card {
   cursor: pointer;
 }
 </style>
