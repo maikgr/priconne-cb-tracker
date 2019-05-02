@@ -40,7 +40,7 @@
         <div class="column is-6">
           <b-field v-if="selected.unique !== null" label="Unique">
             <b-select v-model="selected.unique" placeholder="Level" expanded>
-              <option v-for="ue in uniqueLevels" :value="unique" :key="ue">{{ ue }}</option>
+              <option v-for="ue in uniqueLevels" :value="ue" :key="ue">{{ ue }}</option>
             </b-select>
           </b-field>
         </div>
