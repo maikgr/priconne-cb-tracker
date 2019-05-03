@@ -17,7 +17,7 @@
               <div class="media">
                 <div class="media-left">
                   <figure class="image is-64x64" v-tooltip.auto="character.name">
-                    <img :src="character.image.avatar">
+                    <img :src="getImage(character.id)">
                   </figure>
                 </div>
                 <div class="media-content">
@@ -76,6 +76,9 @@ export default {
     },
     select: function(index) {
       this.$store.state.selected = this.owned[index]
+    },
+    getImage: function(id) {
+      return this.$store.state.imageMap[id]
     }
   }
 };

@@ -2,7 +2,7 @@
   <div v-if="selected" id="details" class="card">
     <div class="card-image">
       <figure class="image">
-        <img :src="selected.image.artwork">
+        <img :src="getArtwork(selected.id)">
       </figure>
     </div>
     <div class="card-content">
@@ -55,6 +55,11 @@ export default {
     gearProgress: [ "Maxed", "In Progress", "None" ],
     uniqueLevels: [0, 30, 50, 70, 90, 110, 130]
   }),
+  methods: {
+    getArtwork: function(id) {
+      return this.$store.state.artworkMap[id]
+    }
+  },
   computed: {
     selected: function() {
       return this.$store.state.selected

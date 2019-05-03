@@ -7,19 +7,29 @@ export function transform (data) {
       rank: 1,
       stars: char.char.rarity,
       unique: char.unique !== '' ? 0 : null,
-      gears: 'None',
-      image: {
-        avatar: char.char.image,
-        artwork: char.char.artwork
-      }
+      gears: 'None'
     }
   })
 }
 
-/**
- * 
- * @param {Object[]} data 
- */
+export function imageMap (data) {
+  let map = {};
+  data.forEach(function(char) {
+    map[char._id] = char.char.image
+  })
+
+  return map
+}
+
+export function artworkMap (data) {
+  let map = {};
+  data.forEach(function(char) {
+    map[char._id] = char.char.artwork
+  })
+
+  return map
+}
+
 export function sort (data) {
   data.sort((a, b) => {
     if (a.tier < b.tier ) {
