@@ -1,18 +1,16 @@
 <template>
   <div id="app">
     <Nav />
-    <Home />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Home from './views/Home'
 import Nav from './components/Nav'
 
 export default {
   name: 'App',
   components: {
-    Home,
     Nav
   }
 }
