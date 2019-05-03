@@ -27,7 +27,7 @@ import Roster from "@/components/Roster";
 import RosterDetails from "@/components/RosterDetails";
 import UserForm from "@/components/UserForm";
 import api from "@/services/api"
-import { transform } from "@/services/dbchar-transformer"
+import { transform, sort } from "@/services/dbchar-transformer"
 export default {
   components: {
     Roster,
@@ -37,7 +37,7 @@ export default {
   created() {
     api.get()
       .then(result => {
-        this.$store.state.owned = transform(result);
+        this.$store.state.owned = transform(sort(result.data));
       })
       .catch(e => {
         console.error(e);

@@ -1,5 +1,5 @@
-export function transform (result) {
-  return result.data.map(char => {
+export function transform (data) {
+  return data.map(char => {
     return {
       id: char._id,
       name: char.char.alias,
@@ -14,4 +14,30 @@ export function transform (result) {
       }
     }
   })
+}
+
+/**
+ * 
+ * @param {Object[]} data 
+ */
+export function sort (data) {
+  data.sort((a, b) => {
+    if (a.tier < b.tier ) {
+      return -1;
+    }
+    else if (a.tier > b.tier) {
+      return 1;
+    }
+    else {
+      if (a._id < b._id) {
+        return -1
+      }
+      else if (a._id > b._id) {
+        return 1;
+      }
+      return 0;
+    }
+  })
+  
+  return data
 }

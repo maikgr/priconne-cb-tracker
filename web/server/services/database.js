@@ -20,7 +20,8 @@ const CharSchema = new Schema ({
     skill2: String,
     ex: String
   },
-  unique: String
+  unique: String,
+  tier: Number
 })
 
 const Char = mongoose.model('pc-char', CharSchema, 'pc-chars')
