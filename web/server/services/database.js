@@ -48,11 +48,7 @@ const userSchema = new Schema({
       stars: Number,
       rank: Number,
       gear: String,
-      unique: Number,
-      image: {
-        avatar: String,
-        artwork: String
-      }
+      unique: Number
     }],
     notOwned:  [{
       id: String,
@@ -61,11 +57,7 @@ const userSchema = new Schema({
       stars: Number,
       rank: Number,
       gear: String,
-      unique: Number,
-      image: {
-        avatar: String,
-        artwork: String
-      }
+      unique: Number
     }]
   },
   teams: {
