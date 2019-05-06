@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const shortid = require('shortid')
 const Schema = mongoose.Schema;
 const connection = mongoose.connection;
 
@@ -36,6 +37,10 @@ module.exports.get = function () {
 
 
 const userSchema = new Schema({
+  _id: {
+    type: String,
+    default: shortid.generate
+  },
   user: {
     username: String,
     level: Number
@@ -47,7 +52,7 @@ const userSchema = new Schema({
       level: Number,
       stars: Number,
       rank: Number,
-      gear: String,
+      gears: String,
       unique: Number
     }],
     notOwned:  [{
@@ -56,7 +61,7 @@ const userSchema = new Schema({
       level: Number,
       stars: Number,
       rank: Number,
-      gear: String,
+      gears: String,
       unique: Number
     }]
   },
@@ -81,5 +86,5 @@ module.exports.addUser = function(user, owned, notOwned) {
 }
 
 module.exports.getUser = function (id) {
-  return User.findOne({ _id: id }).exec();
+  return User.findById(id).exec();
 }

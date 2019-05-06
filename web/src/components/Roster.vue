@@ -43,8 +43,8 @@
           @click="moveToOwned(index)">
             <i class="fas fa-times" aria-hidden="true"></i>
           </span>
-          <figure class="image is-64x64 is-unavailable"  v-tooltip.auto="character.name">
-            <img :src="character.image.avatar">
+          <figure class="image is-64x64 is-unavailable" v-tooltip.auto="character.name">
+            <img :src="getImage(character.id)">
           </figure>
         </div>
       </div>

@@ -35,7 +35,7 @@ export default {
 
       api.addUser(this.username, this.userlevel, this.$store.state.owned, this.$store.state.notOwned)
         .then((result) => {
-          console.log(result.data)
+          this.$route.push({ name: 'user', params: { id: result.data._id }})
         })
         .catch((e) => console.error(e))
       this.isInvalid = false

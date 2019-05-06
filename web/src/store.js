@@ -24,6 +24,10 @@ export default new Vuex.Store({
       state.owned = chars
       state.notOwned = []
       state.selected = null
+    },
+    SET_ROSTER (state, roster) {
+      state.owned = roster.owned
+      state.notOwned = roster.notOwned
     }
   },
   actions: {
@@ -34,7 +38,7 @@ export default new Vuex.Store({
             chars: sort(result.data),
             imageMap: imageMap(result.data),
             artworkMap: artworkMap(result.data)
-          })
+          });
         })
         .catch(e => {
           console.error(e);
@@ -43,11 +47,20 @@ export default new Vuex.Store({
     initializeRoster (context) {
       api.get()
         .then(result => {
-          context.commit('INTIALIZE_ROSTER', transform(sort(result.data)))
+          context.commit('INTIALIZE_ROSTER', transform(sort(result.data)));
         })
         .catch(e => {
           console.error(e);
         });
+    },
+    userRoster (context, id) {
+      api.getUser(id)
+        .then(result => {
+          context.commit('SET_ROSTER', result.data.roster);
+        })
+        .catch(e => {
+          console.error(e);
+        })
     }
   }
 })

@@ -11,6 +11,13 @@
           <Roster/>
         </div>
         <div v-if="$store.state.selected !== null" class="tile is-parent is-vertical is-3">
+          <div class="tile is-child is-12">
+            <div id="save" class="card">
+              <div class="card-content">
+                <b-button type="is-success is-fullwidth">Save</b-button>
+              </div>
+            </div>
+          </div>
           <div class="tile is-child">
             <RosterDetails/>
           </div>
@@ -20,22 +27,22 @@
 </template>
 
 <script>
-import api from '@/services/api'
+import Roster from "@/components/Roster";
+import RosterDetails from "@/components/RosterDetails";
 export default {
+  components: {
+    Roster,
+    RosterDetails
+  },
   created() {
-    this.$store.state.owned = []
-    this.$store.state.notOwned = []
-    this.$store.state.selected = null
-
-    api.getUser(this.$route.params.id)
-      .then((result) => {
-        this.$store.state.owned = result.data.roster.owned
-        this.$store.state.notOwned = result.data.roster.notOwned
-      })
-      .catch((e) => {
-        console.error(e)
-        this.$router.push({ name: 'home' })
-      })
+    this.$store.dispatch('userRoster', this.$route.params.id)
   }
 }
 </script>
+
+<style scoped>
+#save {
+  background-color: rgba(248, 255, 255, 0.75)
+}
+</style>
+
