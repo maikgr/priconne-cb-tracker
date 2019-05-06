@@ -12,9 +12,6 @@ export default {
   name: 'App',
   components: {
     Nav
-  },
-  created() {
-    this.$store.dispatch('initialize');
   }
 }
 </script>

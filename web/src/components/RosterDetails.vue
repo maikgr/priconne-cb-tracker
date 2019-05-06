@@ -51,18 +51,18 @@
 
 <script>
 export default {
+  props: {
+    artwork: String,
+    initialSelected: Object
+  },
   data: () => ({
     gearProgress: [ "Maxed", "In Progress", "None" ],
-    uniqueLevels: [0, 30, 50, 70, 90, 110, 130]
+    uniqueLevels: [0, 30, 50, 70, 90, 110, 130],
+    selected: this.initialSelected
   }),
   methods: {
-    getArtwork: function(id) {
-      return this.$store.state.artworkMap[id]
-    }
-  },
-  computed: {
-    selected: function() {
-      return this.$store.state.selected
+    update: function () {
+      this.$emit('update', this.selected)
     }
   }
 };

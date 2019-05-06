@@ -1,13 +1,9 @@
 import api from './api'
-import { imageMap, artworkMap } from "./dbchar-transformer"
 
 export function getImageMap() {
   return api.get()
     .then((result) => {
       return imageMap(result.data)
-    })
-    .catch(e => {
-      throw e
     })
 }
 
@@ -16,7 +12,22 @@ export function getArtworkMap() {
     .then((result) => {
       return artworkMap(result.data)
     })
-    .catch(e => {
-      throw e
-    })
+}
+
+function imageMap (data) {
+  let map = {};
+  data.forEach(function(char) {
+    map[char._id] = char.char.image
+  })
+
+  return map
+}
+
+function artworkMap (data) {
+  let map = {};
+  data.forEach(function(char) {
+    map[char._id] = char.char.artwork
+  })
+
+  return map
 }
